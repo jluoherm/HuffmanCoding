@@ -50,10 +50,10 @@ public class AList<T> {
 
       //Create new array of new capacity, copy previous array into new array
       T[] b = createArray(newCap);
-      for (int i = 0; i < currentCap; i++){
-        b[i] = a[i];
+      if (currentCap >= 0) {
+        System.arraycopy(a, 0, b, 0, currentCap);
+        a = b;
       }
-      a = b;
     }
   }
 
