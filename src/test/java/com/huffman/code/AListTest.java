@@ -2,10 +2,7 @@ package com.huffman.code;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
-
 import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(3)
