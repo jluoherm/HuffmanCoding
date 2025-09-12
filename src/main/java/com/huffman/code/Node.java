@@ -1,7 +1,7 @@
 package com.huffman.code;
 
 public class Node {
-    public String key;
+    public char aChar;
     public Node parent;
     public Node left;
     public Node right;
@@ -9,24 +9,21 @@ public class Node {
     public int freq = 0;
 
     public String toString() {
-        return key + ":" + freq + "|" + code;
+        return aChar + ":" + freq + "|" + code;
     }
 
     public Node() {}
 
-    public Node(String k) {
-        key = k;
-    }
+    public Node(int f) {freq = f;}
 
-    public Node(String k, int f) {
-        key = k;
+    public Node(char ac, int f) {
+        aChar = ac;
         freq = f;
-
     }
 
-    public Node(Node p, String k, int f, int c) {
+    public Node(Node p, char ac, int f, int c) {
         parent = p;
-        key = k;
+        aChar = ac;
         freq = f;
         code = c;
     }

@@ -23,9 +23,9 @@ public class HuffmanService {
     public void addToHeap() {
         frequencyCount.keySet()
                 .forEach((key) -> {
-                    String nodeKey = key.toString();
+                    //String nodeKey = key.toString();
                     int priority = frequencyCount.get(key);
-                    Node n = new Node(nodeKey,priority);
+                    Node n = new Node(key,priority);
                     huffHeap.add(n,n.freq);
                 });
     }
@@ -36,7 +36,6 @@ public class HuffmanService {
 
     public void printHeap(){
         while (huffHeap.size() > 0) {
-            Node n = huffHeap.peek();
             System.out.println(huffHeap.poll());
         }
     }
@@ -48,7 +47,7 @@ public class HuffmanService {
             x.code = 0;
             y.code = 1;
             int zFreq = x.freq + y.freq;
-            Node z = new Node(String.valueOf(zFreq),zFreq);
+            Node z = new Node(zFreq);
             z.left = x;
             z.right = y;
             addNodeToHeap(z);

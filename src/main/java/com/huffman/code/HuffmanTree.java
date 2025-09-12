@@ -4,11 +4,8 @@ public class HuffmanTree {
 
     public Node root;
 
-
     public void insert(Node z) {
         root = z;
-        //root.right = z.right;
-        //root.left = z.left;
     }
 
     public void printTree() {
