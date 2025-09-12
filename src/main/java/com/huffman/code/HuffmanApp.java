@@ -9,7 +9,15 @@ public class HuffmanApp {
         System.out.println("---Print Frequency Count HashMap----");
         hs.frequencyCount.entrySet().forEach(System.out::println);
         System.out.println("---Add to and print Heap----");
+
         hs.addToHeap();
+        //Node n = new Node("5",5);
+        //hs.addNodeToHeap(n);
+        //hs.printHeap();
+        System.out.println("---Build Tree----");
+        hs.buildTree();
+        //hs.printHeap();
+
     }
 
 }
