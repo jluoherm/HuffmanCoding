@@ -5,14 +5,16 @@ public class Node {
     public Node parent;
     public Node left;
     public Node right;
-    public int code;
     public int freq = 0;
 
-    public String toString() {
-        return aChar + ":" + freq + "|" + code;
+    public boolean isLeaf (Node n){
+        return n != null && n.left == null && n.right == null;
     }
 
-    public Node() {}
+    public String toString() {
+        return aChar + ":" + freq;
+    }
+
 
     public Node(int f) {freq = f;}
 
@@ -21,10 +23,9 @@ public class Node {
         freq = f;
     }
 
-    public Node(Node p, char ac, int f, int c) {
+    public Node(Node p, char ac, int f) {
         parent = p;
         aChar = ac;
         freq = f;
-        code = c;
     }
 }

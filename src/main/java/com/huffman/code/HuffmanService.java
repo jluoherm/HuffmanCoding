@@ -1,6 +1,7 @@
 package com.huffman.code;
 
 import java.util.HashMap;
+import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class HuffmanService {
@@ -8,6 +9,9 @@ public class HuffmanService {
     Heap<Node, Integer> huffHeap = new Heap<>();
     HashMap<Character, Integer> frequencyCount = new HashMap<>();
     HuffmanTree huffTree = new HuffmanTree();
+    HashMap<Character,String> encodingMap = new HashMap<>();
+    StringBuilder sb = new StringBuilder();
+
 
     public void countFrequencies(String dataToEncode) {
         int stringLength = dataToEncode.length();
@@ -23,7 +27,6 @@ public class HuffmanService {
     public void addToHeap() {
         frequencyCount.keySet()
                 .forEach((key) -> {
-                    //String nodeKey = key.toString();
                     int priority = frequencyCount.get(key);
                     Node n = new Node(key,priority);
                     huffHeap.add(n,n.freq);
@@ -44,10 +47,7 @@ public class HuffmanService {
         while (huffHeap.size() > 1) {
             Node x = huffHeap.poll();
             Node y = huffHeap.poll();
-            x.code = 0;
-            y.code = 1;
-            int zFreq = x.freq + y.freq;
-            Node z = new Node(zFreq);
+            Node z = new Node(x.freq + y.freq);
             z.left = x;
             z.right = y;
             addNodeToHeap(z);
@@ -55,6 +55,29 @@ public class HuffmanService {
         Node z = huffHeap.poll();
         huffTree.insert(z);
         huffTree.printTree();
+    }
+
+
+    public void dfs(Node n, StringBuilder s){
+        if (n.isLeaf(n)){
+            String code = sb.toString();
+            encodingMap.put(n.aChar,code);
+        } else {
+            if (n.left != null){
+                sb.append("0");
+                dfs(n.left,sb);
+            }
+            if (n.right != null){
+                sb.append("1");
+                dfs(n.right,sb);
+            }
+        }
+
+    }
+
+    public void buildEncoder(){
+        Node n = huffTree.getRoot();
+        dfs(n,sb);
     }
 }
 

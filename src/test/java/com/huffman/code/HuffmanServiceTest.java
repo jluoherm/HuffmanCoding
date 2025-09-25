@@ -36,4 +36,6 @@ class HuffmanServiceTest {
         assertEquals(3, num5);
         assertEquals(2, num4);
     }
+
+
 }

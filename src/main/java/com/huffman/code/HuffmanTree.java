@@ -8,6 +8,10 @@ public class HuffmanTree {
         root = z;
     }
 
+    public Node getRoot(){
+        return root;
+    }
+
     public void printTree() {
         printSubtree(root, 0);
     }

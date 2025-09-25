@@ -3,7 +3,7 @@ package com.huffman.code;
 public class HuffmanApp {
     public static void main(String[] args) {
         HuffmanService hs = new HuffmanService();
-        hs.countFrequencies("heeeellllllllllllooorrrrrr");
+        hs.countFrequencies("aaabbbbbccccccccdddddddddddd");
 
         System.out.println(hs.frequencyCount.keySet());
         System.out.println("---Print Frequency Count HashMap----");
@@ -16,6 +16,9 @@ public class HuffmanApp {
         //hs.printHeap();
         System.out.println("---Build Tree----");
         hs.buildTree();
+        hs.buildEncoder();
+        //System.out.println(hs.encodingMap.keySet());
+        hs.encodingMap.entrySet().forEach(System.out::println);
         //hs.printHeap();
 
     }
