@@ -10,8 +10,6 @@ public class HuffmanService {
     HashMap<Character, Integer> frequencyCount = new HashMap<>();
     HuffmanTree huffTree = new HuffmanTree();
     HashMap<Character,String> encodingMap = new HashMap<>();
-    StringBuilder sb = new StringBuilder();
-
 
     public void countFrequencies(String dataToEncode) {
         int stringLength = dataToEncode.length();
@@ -58,14 +56,15 @@ public class HuffmanService {
     }
 
 
-    public void dfs(Node n, StringBuilder s){
+    public void dfs(Node n, StringBuilder sb){
         if (n.isLeaf(n)){
             String code = sb.toString();
             encodingMap.put(n.aChar,code);
+            sb.delete(sb.length()-1,sb.length());
         } else {
             if (n.left != null){
                 sb.append("0");
-                dfs(n.left,sb);
+                dfs(n.left, sb);
             }
             if (n.right != null){
                 sb.append("1");
@@ -77,7 +76,8 @@ public class HuffmanService {
 
     public void buildEncoder(){
         Node n = huffTree.getRoot();
-        dfs(n,sb);
+        StringBuilder sb = new StringBuilder();
+        dfs(n, sb);
     }
 }
 
