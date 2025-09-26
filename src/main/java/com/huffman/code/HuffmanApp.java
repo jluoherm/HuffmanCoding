@@ -3,7 +3,8 @@ package com.huffman.code;
 public class HuffmanApp {
     public static void main(String[] args) {
         HuffmanService hs = new HuffmanService();
-        hs.countFrequencies("aaabbbbbccccccccdddddddddddd");
+        hs.countFrequencies("jjjjtjryrgryrrrjrrryyrrrrrtrryyyyyykkkkkkkkkkkkkkkkkkkkkkk");
+        //hs.countFrequencies("aaabbbbbccccccccdddddddddddd");
 
         System.out.println(hs.frequencyCount.keySet());
         System.out.println("---Print Frequency Count HashMap----");

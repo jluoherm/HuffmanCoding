@@ -1,7 +1,6 @@
 package com.huffman.code;
 
 import java.util.HashMap;
-import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class HuffmanService {
@@ -11,12 +10,12 @@ public class HuffmanService {
     HuffmanTree huffTree = new HuffmanTree();
     HashMap<Character,String> encodingMap = new HashMap<>();
 
-    public void countFrequencies(String dataToEncode) {
-        int stringLength = dataToEncode.length();
+    public void countFrequencies(String data) {
+        int stringLength = data.length();
 
         IntStream.range(0, stringLength)
                 .forEach(x -> {
-                    char c = dataToEncode.charAt(x);
+                    char c = data.charAt(x);
                     frequencyCount.put(c,
                             frequencyCount.getOrDefault(c, 0) + 1);
                 });
@@ -55,23 +54,20 @@ public class HuffmanService {
         huffTree.printTree();
     }
 
-
     public void dfs(Node n, StringBuilder sb){
+
         if (n.isLeaf(n)){
             String code = sb.toString();
             encodingMap.put(n.aChar,code);
-            sb.delete(sb.length()-1,sb.length());
-        } else {
-            if (n.left != null){
-                sb.append("0");
-                dfs(n.left, sb);
-            }
-            if (n.right != null){
-                sb.append("1");
-                dfs(n.right,sb);
-            }
         }
-
+        if (n.left != null){
+            dfs(n.left, sb.append("0"));
+            sb.delete(sb.length()-1,sb.length());
+        }
+        if (n.right != null){
+            dfs(n.right,sb.append("1"));
+            sb.delete(sb.length()-1,sb.length());
+        }
     }
 
     public void buildEncoder(){

@@ -37,5 +37,49 @@ class HuffmanServiceTest {
         assertEquals(2, num4);
     }
 
+    @Test
+    //Validate encoding hashmap
+    public void test03() {
+        HuffmanService hs = new HuffmanService();
+        hs.countFrequencies("aaabbbbbccccccccdddddddddddd");
+        hs.addToHeap();
+        hs.buildTree();
+        hs.buildEncoder(); // this is hashmap
+        String d = "0";
+        String c = "10";
+        String a = "110";
+        String b = "111";
+
+        assertEquals(hs.encodingMap.get('d'),d);
+        assertEquals(hs.encodingMap.get('c'),c);
+        assertEquals(hs.encodingMap.get('a'),a);
+        assertEquals(hs.encodingMap.get('b'),b);
+
+    }
+
+    @Test
+    //Validate encoding hashmap
+    public void test04() {
+        HuffmanService hs = new HuffmanService();
+        hs.countFrequencies("jjjjtjryrgryrrrjrrryyrrrrrtrryyyyyykkkkkkkkkkkkkkkkkkkkkkk");
+        hs.addToHeap();
+        hs.buildTree();
+        hs.buildEncoder(); // this is hashmap
+        String r = "10";
+        String t = "11001";
+        String g = "11000";
+        String y = "111";
+        String j = "1101";
+        String k = "0";
+
+        assertEquals(hs.encodingMap.get('r'),r);
+        assertEquals(hs.encodingMap.get('t'),t);
+        assertEquals(hs.encodingMap.get('g'),g);
+        assertEquals(hs.encodingMap.get('y'),y);
+        assertEquals(hs.encodingMap.get('j'),j);
+        assertEquals(hs.encodingMap.get('k'),k);
+
+    }
+
 
 }

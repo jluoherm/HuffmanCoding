@@ -5,7 +5,7 @@ public class Node {
     public Node parent;
     public Node left;
     public Node right;
-    public int freq = 0;
+    public int freq;
 
     public boolean isLeaf (Node n){
         return n != null && n.left == null && n.right == null;
