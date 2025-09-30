@@ -56,7 +56,7 @@ public class HuffmanService {
         }
         Node z = huffHeap.poll();
         huffTree.insert(z);
-        huffTree.printTree();
+        //huffTree.printTree();
     }
 
     public void dfs(Node n, StringBuilder sb) {
