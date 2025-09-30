@@ -7,6 +7,7 @@ package com.huffman.code;
  * values and their corresponding priorties, add and remove values from the set, confirm if a value exists in the
  * set, and to update a value's priority.
  */
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /** An instance is a min-heap of distinct values of type V with
