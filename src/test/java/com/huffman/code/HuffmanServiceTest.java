@@ -81,5 +81,66 @@ class HuffmanServiceTest {
 
     }
 
+    @Test
+    public void test05() {
+        HuffmanService hs = new HuffmanService();
+        hs.countFrequencies("pipppperrr pippppar piippppeer");
+        hs.addToHeap();
+        hs.buildTree();
+        hs.buildEncoder(); // this is hashmap
+        String p = "0";
+        String i = "110";
+        String r = "111";
+        String e = "100";
+        String a = "1010";
+        String space = "1011";
+
+        assertEquals(hs.encodingMap.get('p'),p);
+        assertEquals(hs.encodingMap.get('i'),i);
+        assertEquals(hs.encodingMap.get('r'),r);
+        assertEquals(hs.encodingMap.get('e'),e);
+        assertEquals(hs.encodingMap.get('a'),a);
+        assertEquals(hs.encodingMap.get(' '),space);
+    }
+
+    @Test
+    //Test encoder / decoder simple
+    public void test06() {
+        HuffmanService hs = new HuffmanService();
+        String inputString = "heeeellooorrrrrr";
+        String actual = hs.encode(inputString);
+        String expected = "11101010101011111111110110110000000";
+        assertEquals(actual,expected);
+
+        String actualDecoded = hs.decode();
+        String expectedDecoded = "heeeellooorrrrrr";
+        assertEquals(actualDecoded,expectedDecoded);
+
+
+    }
+
+    @Test
+    //Test encoder
+    public void test07() {
+        HuffmanService hs = new HuffmanService();
+        String actualCodedString = hs.encode("pipppperrr pippppar piippppeer");
+        String expectedCodedString = "011000001001111111111011011000001010111101101101100000100100111";
+        assertEquals(actualCodedString,expectedCodedString);
+    }
+
+    @Test
+    //Test decoder
+    public void test08() {
+        HuffmanService hs = new HuffmanService();
+        String inputString = "pipppperrr pippppar piippppeer";
+
+        String actualCodedString = hs.encode(inputString);
+        String expectedCodedString = "011000001001111111111011011000001010111101101101100000100100111";
+        assertEquals(actualCodedString,expectedCodedString);
+
+        String actualDecodedString = hs.decode();
+        assertEquals(actualDecodedString,inputString);
+    }
+
 
 }
